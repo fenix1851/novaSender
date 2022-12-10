@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Рассылки</title>
+</head>
+
+<body>
+    <div id="loading"  style="display: none;">
+        <img src="http://localhost:5000/images/loading-gif.gif" alt="loading">
+    </div>
+    <!-- leftbar -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <div class="leftbar">
+                    <div class="leftbar__logo">
+                        <!-- img with content from localhost:5000/images/logo.png -->
+                        <img src="http://localhost:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                    </div>
+                    <div class="leftbar__menu">
+                        <ul>
+                            <li><a href="main.html">Домой</a></li>
+                            <li><a href="base.html">Базы</a></li>
+                            <li><a href="sender.html">Рассыльщик</a></li>
+                        </ul>
+                        <!-- username, email and balance in the bottom of leftbar -->
+                        <div class="leftbar__user">
+                            <div class="leftbar__user__name">Username: <span id="username"></span></div>
+                            <div class="leftbar__user__email">Email: <span id="email"></span></div>
+                            <a class="leftbar__user__balance" href="balance.html">Balance: <span id="balance"></span></a>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- rightbar -->
+            <div class="col-10">
+                <div class="row  mt-4 mb-4">
+                    <div class="col-1">
+                        <h1>Рассылки</h1>
+                    </div>
+                </div>
+                <div class="row  mt-4 mb-4">
+                    <div class="col-12">
+                        <button id="create" class="btn btn-primary">Создать рассылку</button>
+                    </div>
+                </div>
+                <div class="row  mt-4 mb-4">
+                    <div class="col-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Название</th>
+                                    <th scope="col">Дата создания</th>
+                                    <th scope="col">Статус</th>
+                                    <th scope="col">Количество получателей</th>
+                                    <th scope="col">Количество отправленных</th>
+                                    <!-- <th scope="col">Количество открытых</th> -->
+                                    <!-- <th scope="col">Количество кликов</th> -->
+                                    <!-- <th scope="col">Количество отписавшихся</th> -->
+                                    <!-- <th scope="col">Количество ошибок</th> -->
+                                </tr>
+                            </thead>
+                            <tbody id="distributions">
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popup for creating distribution -->
+    <div class="popup" id="popup">
+        <div class="popup__content">
+            <div class="popup__content__close" id="popup__content__close">
+                <span>&times;</span>
+            </div>
+            <div class="popup__content__title">
+                <h1>Создание рассылки</h1>
+            </div>
+            <div class="popup__content__form">
+                <form action="http://localhost:5000/api/v1/distribution" method="POST">
+                    <div class="form-group
+                    ">
+                        <label for="name">Название</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Название">
+                    </div>
+
+                    <div class="form-group
+                    ">
+                        <label for="base">База</label>
+                        <select class="form-control" id="base" name="base">
+                            
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <!-- текст -->
+                        <label for="text">Текст</label>
+                        <textarea class="form-control" id="text" name="text" rows="3"></textarea>
+                    </div>
+
+                </form>
+            </div>
+            <div class="popup__content__buttons">
+                <button id="createDistribution" class="btn btn-primary">Создать</button>
+            </div>
+        </div>
+    </div>
+<script>
+    const path = require('path')
+    const renderer = require(path.join(__dirname, 'renderer.js'));
+    
+    window.onload = function () {
+        renderer.loadLeftbar();
+        renderer.loadPopupContent();
+        renderer.loadDistributions();
+    }
+
+    let createButton = document.getElementById('create');
+    createButton.addEventListener('click', function () {
+        renderer.showPopup();
+    });
+    let popup__content__close = document.getElementById('popup__content__close');
+    popup__content__close.addEventListener('click', function () {
+        renderer.hidePopup();
+    });
+    let createDistribution = document.getElementById('createDistribution');
+    createDistribution.addEventListener('click', function () {
+        renderer.createDistribution();
+    });
+</script>
+</body>
+
+</html>

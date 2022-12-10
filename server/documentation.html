@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation</title>
+</head>
+<body>
+    <h1>Start page</h1>
+    <h3>
+        Available methods:
+    </h3>
+    <ul>
+        <li>Registration (POST) - /reg
+            <ul>
+            <li>
+                In: Raw Data(JSON)
+                Out: String(Registration Error/Succesfully registred ${username})
+            </li>
+            <li>
+                Required data:
+                {
+                    "username": 'type string, must be not empty',
+                    "email": 'type string, must be not empty',
+                    "password": 'type string, length must be at least 8',
+
+                }
+            </li>
+        </ul>
+        </li>
+        <li>Login (POST) - /login
+            <ul>
+            <li>
+                In: Raw Data(JSON)/Authorization header
+                Out: JSON{
+                    AccessToken:"String",
+                    RefreshToken:"String"
+                }/Login Error
+            </li>
+            <li>ё
+                Required data:
+                {
+                    "username": 'type string, must be not empty',
+                    "password": 'type string, length must be at least 8',
+                }
+
+                Headers
+                {
+                    String: "Beareer acces_token"
+                }
+            </li>
+        </ul>
+        </li>
+    </ul>
+</body>
+</html>

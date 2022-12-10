@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>HomePage</title>
+</head>
+<body>
+    <!-- container fluid -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <div class="leftbar">
+                    <div class="leftbar">
+                        <div class="leftbar__logo">
+                            <!-- img with content from localhost:5000/images/logo.png -->
+                            <img src="http://localhost:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                        </div>
+                    <div class="leftbar__menu">
+                        <ul>
+                            <li><a href="main.html">Домой</a></li>
+                            <li><a href="base.html">Базы</a></li>
+                            <li><a href="sender.html">Рассыльщик</a></li>
+                        </ul>
+                        <!-- username, email and balance in the bottom of leftbar -->
+                        <div class="leftbar__user">
+                            <div class="leftbar__user__name">Username: <span id="username"></span></div>
+                            <div class="leftbar__user__email">Email: <span id="email"></span></div>
+                            <a class="leftbar__user__balance" href="balance.html">Balance: <span id="balance"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- leftbar menu -->
+    <script>
+        const path = require('path');
+        const renderer = require(path.join(__dirname, 'renderer.js'));
+
+        // once window is loaded, launch loadLeftbar function from renderer.js
+        window.addEventListener('load', () => {
+            renderer.loadLeftbar();
+        });
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Bases</title>
+</head>
+<body class="overflow-hidden">
+<!-- same leftbar as in main -->
+
+<style>
+    
+</style>
+
+<!--bootstrap flex container with padding for leftbar-->
+<!-- loader -->
+<div id="loading"  style="display: none;">
+    <img src="http://localhost:5000/images/loading-gif.gif" alt="loading">
+</div>
+
+<div class="container-fluid">
+    <!-- video -->
+    <div class="row">
+        <div class="col-2">
+            <div class="leftbar">
+                <div class="leftbar__logo">
+                    <!-- img with content from localhost:5000/images/logo.png -->
+                    <img src="http://localhost:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                </div>
+                <div class="leftbar__menu">
+                    <ul>
+                        <li><a href="main.html">Домой</a></li>
+                        <li><a href="base.html">Базы</a></li>
+                        <li><a href="sender.html">Рассыльщик</a></li>
+                    </ul>
+                    <!-- username, email and balance in the bottom of leftbar -->
+                    <div class="leftbar__user">
+                        <div class="leftbar__user__name">Username: <span id="username"></span></div>
+                        <div class="leftbar__user__email">Email: <span id="email"></span></div>
+                        <a class="leftbar__user__balance" href="balance.html">Balance: <span id="balance"></span></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <!-- rickroll video -->
+            <h1>Базы</h1>
+            <hr>
+            <h2>Инструкция по добавлению базы контактов</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <hr>
+            <!-- bootstrap download link -->
+            <a href="/files/template.xlsx" id="download" class="btn btn-primary">Скачать шаблон</a>
+            <hr>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <label for="file">Выберите заполненный шаблон</label>
+                <input type="file" name="file" style="height:max-content;" class="form-control mb-2" id="file">
+                <!-- invisible span with id fileName -->
+                <span id="fileName" style="visibility: hidden; position:absolute;"></span>
+                <input type="submit" class="btn btn-primary mb-2" value="Загрузить на проверку">
+            </form>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span id="total"></span>
+            <span id="valid"></span>
+            <span id="invalid"></span>
+            <hr>
+            <span id="price"></span>
+            <span id="message" style="display: none;" >Хотите исправить все номера или добавить базу только из валидных?</span>
+            <hr>
+        <div class="d-flex flex-row">
+            <button  class="btn btn-primary mr-2"  style="display: none;" id="improve">Исправить</button>
+            <button  class="btn btn-primary"  style="display: none;" id="next">Продолжить так</button>
+            </div>
+            <!-- scrollable constainer -->
+            <ul id="bases" class="overflow-auto" style="max-height:260px ;"></ul>
+
+        </div>
+    </div>  
+
+</div>
+
+    <script>
+        const path = require('path');
+        const renderer = require(path.join(__dirname, 'renderer.js'));
+
+        // once window is loaded, launch loadLeftbar function from renderer.js
+        window.addEventListener('load', () => {
+            renderer.loadLeftbar();
+            renderer.getBases()
+        });
+
+        // get download button
+        const download = document.getElementById('download');
+        // prevent default action on click
+        download.addEventListener('click', (e) => {
+            e.preventDefault();
+            renderer.download("template.xlsx");
+        });
+        let upload = document.getElementById('uploadForm');
+        upload.addEventListener('submit', (e) => {
+            e.preventDefault();
+            renderer.uploadFile()
+        });
+    </script>
+</body>
+</html>

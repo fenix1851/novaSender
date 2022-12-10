@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Register</title>
+</head>
+<body>
+    <!-- registration with email, login and password-->
+    <!-- loading object -->
+    <div id="loading"  style="display: none;">
+        <img src="http://localhost:5000/images/loading-gif.gif" alt="loading">
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Register</h1>
+                <!-- bootstrap form -->
+                <form action="/register" method="POST">
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="username" id="username">
+                        </div>
+
+                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" name="password" id="password">
+                        </div>
+
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- bootstrap separator -->
+                <hr>
+                <!-- bootstrap link -->
+                <a href="#" id="login">Login</a>
+            </div>
+    </div>
+    
+    <!-- <h1>Register</h1>
+
+    <form action="/register" method="POST">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Register</button>
+    </form> -->
+    <!-- link for login -->
+    <script>
+        const path = require('path');
+        const renderer = require(path.join(__dirname, 'renderer.js'));
+        // preevent default login href
+        let login = document.getElementById('login');
+        console.log(login);
+        login.addEventListener('click', (e) => {
+            e.preventDefault();
+            // login function call from renderrer
+            renderer.login();
+        });
+        // prevent default form action
+        let form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // register function call from renderrer
+            renderer.sendRegisterRequest()
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>NovaSender</title>
+</head>
+<body>
+    <!-- same markup but in bootstrap -->
+    <div class="container-fluid justify-content-center">
+        <!-- header 1 on center and two bootstrap button below -->
+        <div class="row justify-content-center align-middle">
+            <div class="col-2">
+                <h1>NovaSender</h1>
+                <button id="register" class="btn btn-primary">Register</button>
+                <button id="login" class="btn btn-primary">Login</button>
+            </div>
+    </div>
+    <script>
+        //require renderer.js
+        const renderrer = require('./renderer.js')
+        let login = document.getElementById('login')
+        let register = document.getElementById('register')
+
+        //on click calls login function
+        login.addEventListener('click', () => {
+            renderrer.login()
+        })
+
+        //on click calls register function
+        register.addEventListener('click', () => {
+            renderrer.register()
+        })
+
+
+    </script>
+</body>
+</html>
+

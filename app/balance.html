@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Balance</title>
+</head>
+<body>
+    <!-- form for choosing amount of money and button -->
+    <div class="container-fluid justify-content-center">
+        <div class="row justify-content-center align-middle">
+            <div class="col-2">
+                <div class="leftbar">
+                    <div class="leftbar">
+                        <div class="leftbar__logo">
+                            <!-- img with content from localhost:5000/images/logo.png -->
+                            <img src="http://localhost:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                        </div>
+                    <div class="leftbar__menu">
+                        <ul>
+                            <li><a href="main.html">Домой</a></li>
+                            <li><a href="base.html">Базы</a></li>
+                            <li><a href="sender.html">Рассыльщик</a></li>
+                        </ul>
+                        <!-- username, email and balance in the bottom of leftbar -->
+                        <div class="leftbar__user">
+                            <div class="leftbar__user__name">Username: <span id="username"></span></div>
+                            <div class="leftbar__user__email">Email: <span id="email"></span></div>
+                            <a class="leftbar__user__balance" href="balance.html">Balance: <span id="balance"></span></a>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-10">
+                <h1>Баланс</h1>
+                <form action="">
+                    <input type="number" placeholder="1000 рублей" name="amount" id="amount">
+                    <button id="add" class="btn btn-primary">Пополнить</button>
+                </form>
+            </div>
+    </div>
+    <style>
+        /* styles for leftbar menu */
+        .leftbar {
+    
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .leftbar__logo {
+            padding: 20px;
+        }
+        .leftbar__logo img {
+            width: 100%;
+            max-width: 150px;
+        }
+        .leftbar__menu {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+        }
+        .leftbar__menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .leftbar__menu ul li {
+            margin-bottom: 10px;
+        }
+        .leftbar__menu ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .leftbar__menu ul li a:hover {
+            color: #f00;
+        }
+    </style>
+    <script>
+        const axios = require('axios')
+        const path = require('path')
+        //require renderer.js
+        const renderer = require(path.join(__dirname, 'renderer.js'));
+
+        window.onload = () => {
+            renderer.loadLeftbar();
+
+        }
+        let add = document.getElementById('add')
+        let amount = document.getElementById('amount')
+
+        //on click calls add function
+        add.addEventListener('click', (e) => {
+            e.preventDefault()
+            renderer.add(amount.value)
+        })
+    </script>
+</body>
+</html>
