@@ -129,5 +129,13 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-.csv
-.xlsx
+
+
+# add ignoring off tables 
+# ignore all tables
+*.csv
+*.xlsx
+# ignoring server/static/files
+server/static/files
+# ignoring server/static/files
+server/static/files
