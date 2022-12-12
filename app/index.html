@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <title>NovaSender</title>
 </head>
 <body>
     <!-- same markup but in bootstrap -->
-    <div class="container-fluid justify-content-center">
+    <div class="container-fluid justify-content-center index-container">
         <!-- header 1 on center and two bootstrap button below -->
-        <div class="row justify-content-center align-middle">
-            <div class="col-2">
-                <h1>NovaSender</h1>
-                <button id="register" class="btn btn-primary">Register</button>
-                <button id="login" class="btn btn-primary">Login</button>
+        <div class="index-pre-wrapper">
+            <div class="index-wrapper">
+                <h1 class="index-header">NovaSender</h1>
+                <div class="index-button-wrapper">
+                    <button id="register" class="btn btn-primary">Зарегистрироваться</button>
+                <button id="login" class="btn btn-primary">Войти</button>
+                </div>
+                
             </div>
     </div>
     <script>
@@ -27,12 +30,14 @@
 
         //on click calls login function
         login.addEventListener('click', () => {
-            renderrer.login()
+            // link to login.html
+            window.location.href = 'login.html'
         })
 
         //on click calls register function
         register.addEventListener('click', () => {
-            renderrer.register()
+            // link to register.html
+            window.location.href = 'register.html'
         })
 
 

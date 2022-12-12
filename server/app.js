@@ -21,7 +21,7 @@ app.use('/auth', authRouter)
 app.use('/admin', adminRouter)
 app.use('/user', userRouter)
 app.get('/', (req,res) => {
-    res.sendFile(path.join(__dirname+"/documentation.html"))
+    res.sendFile(path.join(__dirname+"/redirect.html"))
 })
 // static images
 app.use('/images', express.static(path.join(__dirname,'static','images')))

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+
+    <title>Тарифы</title>
+</head>
+<body>
+    <!--container fluid  -->
+    <div class="container-fluid justify-content-center">
+        <!--row -->
+        <div class="row">
+            <div class="col-2">
+                <div class="leftbar">
+                    <div class="leftbar__logo">
+                        <!-- img with content from localhost:5000/images/logo.png -->
+                        <img src="http://188.225.85.141:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                    </div>
+                    <div class="leftbar__menu">
+                        <ul>
+                            <li><a href="main.html">Домой</a></li>
+                            <li><a href="base.html">Базы</a></li>
+                            <li><a href="sender.html">Рассыльщик</a></li>
+                            <li><a href="tariffes.html">Тарифы</a></li>
+                        </ul>
+                        <!-- username, email and balance in the bottom of leftbar -->
+                        <div class="leftbar__user">
+                            <!-- Информация о подписке -->
+                            <div class="leftbar__user__sub">
+                                <div class="leftbar__user__sub__name">Тариф: <span id="subname"></span></div>
+                                <div class="leftbar__user__sub__date">Осталось: <span id="subdaysleft"></span></div>
+                            </div>
+                            <div class="leftbar__user__name">Логин: <span id="username"></span></div>
+                            <div class="leftbar__user__email">Почта: <span id="email"></span></div>
+                            <a class="leftbar__user__balance" href="balance.html">Баланс: <span id="balance"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--col-10 -->
+            <div class="col-10">
+                <h1>Тарифы</h1>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center">1 День</h5>
+                                <!-- display none span with subname id -->
+                                <span class="subname" style="display: none;">Дневной</span>
+                                <p class="card-text text-center">Цена: 1300 рублей</p>
+                                <p class="card-text text-center">Цена за день: 1300</p>
+                                <button class="btn btn-primary">Купить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center">30 дней</h5>
+                                <!-- 27 000 -->
+                                <span class="subname" style="display: none;">Месячный</span>
+                                <p class="card-text text-center">Цена: 27000 рублей</p>
+                                <!--  цена за сутки 1300,-->
+                                <p class="card-text text-center">Цена за день: <span style="text-decoration: line-through;">1300</span> 900 рублей</p>
+
+                                <button class="btn btn-primary">Купить</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h5 class="card-title text-center">90 дней</h5>
+                                <span class="subname" style="display: none;">3-x месячный</span>
+                                <!-- 58 500 -->
+                                <p class="card-text text-center">Цена: 58500 рублей</p>
+                                <!-- цена за день 1300 перечёркнуто 650 -->
+                                <p class="card-text text-center">Цена за день: <span style="text-decoration: line-through;">1300</span> 650 рублей</p>
+                                <button class="btn btn-primary">Купить</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+         <script>
+            const path = require('path');
+            const renderer = require(path.join(__dirname, 'renderer.js'));
+            // get username, email and balance from localStorage
+            window.onload = async function() {
+                await renderer.loadLeftbar();
+                let username = localStorage.getItem('username');
+                let email = localStorage.getItem('email');
+                let balance = localStorage.getItem('balance');
+                // set username, email and balance to html
+                document.getElementById('username').innerHTML = username;
+                document.getElementById('email').innerHTML = email;
+                document.getElementById('balance').innerHTML = balance;
+            }
+
+            //get buttons
+            let buttons = document.querySelectorAll('.btn');
+            // add event listener to buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // get price from button
+                    let card = button.parentElement;
+                    let subname = card.querySelector('.subname').innerHTML;
+                    renderer.buySub(subname);
+                })
+            })
+            
+         </script>                       
+</body>
+</html>

@@ -24,6 +24,7 @@ module.exports = function(innerAcces) {
             }
 
             // find subscription
+            
             const subscription =  await Subscriptions.findById(user.subscription) 
             
             if(!subscription){
@@ -58,7 +59,7 @@ module.exports = function(innerAcces) {
                 user.subscription = ''
                 user.subscriptionStart = ''
                 await user.save()
-                return res.status(403).json({message: 'End of subscription'})
+                return res.status(403).json({message: 'Подписка окончена, продлите подписку'})
             }
             next()
         } catch(e) {

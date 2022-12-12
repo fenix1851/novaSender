@@ -12,23 +12,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@electron/remote": "^2.0.8",
-    "axios": "^1.2.0",
-    "bcrypt": "^5.1.0",
-    "cookie-parser": "^1.4.6",
+    "axios": "^1.2.1",
+    "puppeteer-core": "^19.2.2",
+    "puppeteer-in-electron": "^3.0.5",
+    "remote": "^0.0.7",
+    "spectron": "^10.0.1",
+    "electron-download-manager": "^2.1.2"
+  },
+  "devDependencies": {
     "electron": "^22.0.0",
-    "electron-dl": "^3.5.0",
-    "electron-download-manager": "^2.1.2",
-    "express": "^4.18.2",
-    "express-validator": "^6.14.2",
-    "formidable": "^2.1.1",
-    "jsonwebtoken": "^8.5.1",
-    "mocha": "^10.1.0",
-    "mongoose": "^6.7.5",
-    "nodemailer": "^6.8.0",
-    "remote": "^0.2.6",
-    "spectron": "^19.0.0",
-    "uuid": "^9.0.0",
-    "xlsx": "^0.18.5"
+    "electron-builder": "^22.14.5",
+    "electron-packager": "^15.4.0",
+    "electron-rebuild": "^3.2.5",
+    "electron-winstaller": "^4.0.0",
+    "nodemon": "^2.0.15"
   }
 }

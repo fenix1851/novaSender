@@ -5,41 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <!-- loader -->
     <div id="loading"  style="display: none;">
-        <img src="http://localhost:5000/images/loading-gif.gif" alt="loading">
+        <img src="http://188.225.85.141:5000/images/loading-gif.gif" alt="loading">
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 p-3">
         <div class="row">
             <div class="col-12">
-                <h1>Login</h1>
+                <h1>Войти</h1>
                 <!-- bootstrap form -->
                 <form action="/login" method="POST">
                     <div class="form-group
                     row">
-                        <label for="username" class="col-sm-2 col-form-label">Username</label>
-                        <div class="col-sm-10">
+                        <label for="username" class="col-sm-2 col-form-label">Логин</label>
+                        <div class="col-sm-10 mb-3">
                             <input type="text" class="form-control" name="username" id="username">
                         </div>
-                        <label for="password" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
+                        <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+                        <div class="col-sm-10 mb-3">
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                        <div class="col-sm-10 mb-3">
+                            <button type="submit" class="btn btn-primary">Войти</button>
                         </div>
                     </div>
                 </form>
                 <hr>
-                <a href="#" id="register">Register</a>
+                <a href="register.html" id="register">Зарегистрироваться</a>
             </div>
         </div>
     </div>
 
     <!-- <form action="/login" method="POST">
-        <label for="username">Username</label>
+        <label for="username">Логин/label>
         <input type="text" name="username" id="username">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
@@ -53,14 +54,7 @@
         const path = require('path');
         const renderer = require(path.join(__dirname, 'renderer.js'));
         // preevent default register href
-        let register = document.getElementById('register');
-        console.log(register);
-        register.addEventListener('click', (e) => {
-            e.preventDefault();
-            // register function call from renderrer
-            renderer.register();
-        });
-
+  
         // prevent default form action
         let form = document.querySelector('form');
         form.addEventListener('submit', (e) => {

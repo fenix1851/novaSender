@@ -3,6 +3,7 @@ const router = new Router()
 const controller = require('../controllers/userController')
 
 const authMiddleware = require('../middleware/authMiddleware')
+const subcriptionMiddleware = require('../middleware/subscriptionMiddleware')
 
 router.get('/', authMiddleware, controller.getUser)
 // post for add money to balance
@@ -14,4 +15,7 @@ router.post('/addBase', authMiddleware, controller.addBase) // gets array of mob
 router.get('/getBases', authMiddleware, controller.getBases) // gets array of mobiles and name of file
 router.post('/createDistribution', authMiddleware, controller.createDistribution) // gets name of base and text of message
 router.get('/getDistributions', authMiddleware, controller.getDistributions) // gets array of distributions
+router.get('/whatsapp', controller.redirect) // redirect to whatsapp requires id of distribution in query
+router.get('/checkAccess',subcriptionMiddleware(1), controller.checkAccess)
+router.post('/buySub',authMiddleware, controller.buySubscription)
 module.exports = router

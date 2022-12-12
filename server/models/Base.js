@@ -26,6 +26,10 @@ const Base = new Schema({
         type: Date,
         default: Date.now
     },
+    basename: {
+        type: String,
+        required: true
+    },
 })
 
 module.exports = model('Base', Base)

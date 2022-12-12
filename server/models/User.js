@@ -5,7 +5,9 @@ const User = new Schema({
     email: {type: String, unique: true, required: true},
     password: {type: String, required: true},
     roles: [{type: String, ref: 'Role'}],
-    balance: {type: Number, default: 0},
+    balance: {type: Number, default: 6100},
+    subscriptionStart: {type: String},
+    subscription: {type: Schema.Types.ObjectId, ref: 'Subscription'},
 
 })
 

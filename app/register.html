@@ -11,47 +11,47 @@
     <!-- registration with email, login and password-->
     <!-- loading object -->
     <div id="loading"  style="display: none;">
-        <img src="http://localhost:5000/images/loading-gif.gif" alt="loading">
+        <img src="http://188.225.85.141:5000/images/loading-gif.gif" alt="loading">
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-5 p-3">
         <div class="row">
             <div class="col-12">
-                <h1>Register</h1>
+                <h1>Регистрация</h1>
                 <!-- bootstrap form -->
                 <form action="/register" method="POST">
-                    <div class="form-group row">
-                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
+                    <div class="form-group row ">
+                        <label for="email" class="col-sm-2 col-form-label">Емейл</label>
+                        <div class="col-sm-10 mb-3">
                             <input type="email" class="form-control" name="email" id="email">
                         </div>
-                        <label for="username" class="col-sm-2 col-form-label">Username</label>
-                        <div class="col-sm-10">
+                        <label for="username" class="col-sm-2 col-form-label">Логин</label>
+                        <div class="col-sm-10 mb-3">
                             <input type="text" class="form-control" name="username" id="username">
                         </div>
 
-                        <label for="password" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
+                        <label for="password" class="col-sm-2 col-form-label">Пароль</label>
+                        <div class="col-sm-10 mb-3">
                             <input type="password" class="form-control" name="password" id="password">
                         </div>
 
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Register</button>
+                        <div class="col-sm-10 mb-3">
+                            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
                         </div>
                     </div>
                 </form>
                 <!-- bootstrap separator -->
                 <hr>
                 <!-- bootstrap link -->
-                <a href="#" id="login">Login</a>
+                <a href="login.html" id="login">Войти</a>
             </div>
     </div>
     
     <!-- <h1>Register</h1>
 
     <form action="/register" method="POST">
-        <label for="email">Email</label>
+        <label for="email">Логин/label>
         <input type="email" name="email" id="email">
-        <label for="username">Username</label>
+        <label for="username">Логин/label>
         <input type="text" name="username" id="username">
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
@@ -62,13 +62,7 @@
         const path = require('path');
         const renderer = require(path.join(__dirname, 'renderer.js'));
         // preevent default login href
-        let login = document.getElementById('login');
         console.log(login);
-        login.addEventListener('click', (e) => {
-            e.preventDefault();
-            // login function call from renderrer
-            renderer.login();
-        });
         // prevent default form action
         let form = document.querySelector('form');
         form.addEventListener('submit', (e) => {

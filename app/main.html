@@ -17,19 +17,25 @@
                     <div class="leftbar">
                         <div class="leftbar__logo">
                             <!-- img with content from localhost:5000/images/logo.png -->
-                            <img src="http://localhost:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
+                            <img src="http://188.225.85.141:5000/images/logo.png" alt="logo" style="height: 64px; width:auto">
                         </div>
                     <div class="leftbar__menu">
                         <ul>
                             <li><a href="main.html">Домой</a></li>
                             <li><a href="base.html">Базы</a></li>
                             <li><a href="sender.html">Рассыльщик</a></li>
+                            <li><a href="tariffes.html">Тарифы</a></li>
                         </ul>
                         <!-- username, email and balance in the bottom of leftbar -->
                         <div class="leftbar__user">
-                            <div class="leftbar__user__name">Username: <span id="username"></span></div>
-                            <div class="leftbar__user__email">Email: <span id="email"></span></div>
-                            <a class="leftbar__user__balance" href="balance.html">Balance: <span id="balance"></span></a>
+                             <!-- Информация о подписке -->
+                            <div class="leftbar__user__sub">
+                                <div class="leftbar__user__sub__name">Тариф: <span id="subname"></span></div>
+                                <div class="leftbar__user__sub__date">Осталось: <span id="subdaysleft"></span></div>
+                            </div>
+                            <div class="leftbar__user__name">Логин: <span id="username"></span></div>
+                            <div class="leftbar__user__email">Почта: <span id="email"></span></div>
+                            <a class="leftbar__user__balance" href="balance.html">Баланс: <span id="balance"></span></a>
                         </div>
                     </div>
                 </div>
@@ -44,8 +50,10 @@
 
         // once window is loaded, launch loadLeftbar function from renderer.js
         window.addEventListener('load', () => {
+
             renderer.loadLeftbar();
         });
+ 
         
 
     </script>
